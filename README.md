@@ -1,4 +1,6 @@
 Features
+
+
 Custom Board & Dice: Reads board layout and predefined dice rolls from a file.
 
 Strategies: Supports Greedy, Careful, and Tactical player behaviors.
