@@ -8,6 +8,13 @@ package com.mycompany.mavenproject1;
  *
  * @author user
  */
-public class CarefulPlayer {
+public class CarefulPlayer extends Player{
+    public CarefulPlayer(String name) {
+        super(name);
+    }
     
+    @Override
+    public boolean shouldBuy(int cost){
+        return this.getBalance()/2 >= cost;
+    }
 }

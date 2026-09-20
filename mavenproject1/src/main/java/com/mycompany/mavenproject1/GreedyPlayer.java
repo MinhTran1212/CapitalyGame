@@ -8,6 +8,14 @@ package com.mycompany.mavenproject1;
  *
  * @author user
  */
-public class GreedyPlayer {
+public class GreedyPlayer extends Player{
+
+    public GreedyPlayer(String name) {
+        super(name);
+    }
     
+    @Override
+    public boolean shouldBuy(int cost){
+        return this.getBalance() >= cost;
+    }
 }

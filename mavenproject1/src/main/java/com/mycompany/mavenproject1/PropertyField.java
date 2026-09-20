@@ -15,6 +15,7 @@ public class PropertyField extends Field {
             if (player.shouldBuy(1000)){
                 player.decreaseBalance(1000);
                 this.owner = player;
+                player.addProperty(this);
             }
         } else if (player == this.owner){
             if (!this.hasHouse && player.shouldBuy(4000)){
