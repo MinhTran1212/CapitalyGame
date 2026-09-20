@@ -8,6 +8,19 @@ package com.mycompany.mavenproject1;
  *
  * @author user
  */
-public class ServiceField {
+public class ServiceField extends Field {
+        private final int amount;
     
+    public ServiceField(int amount){
+        this.amount = amount;
+    }
+    
+    public int getReduction(){
+        return this.amount;
+    }
+    
+    @Override
+    public void stepOn(Player player) {
+       player.decreaseBalance(this.amount);
+    }
 }

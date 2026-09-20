@@ -8,6 +8,19 @@ package com.mycompany.mavenproject1;
  *
  * @author user
  */
-public class LuckyField {
+public class LuckyField extends Field{
+    private final int amount;
     
+    public LuckyField(int amount){
+        this.amount = amount;
+    }
+    
+    public int getReward(){
+        return this.amount;
+    }
+    
+    @Override
+    public void stepOn(Player player) {
+       player.increaseBalance(this.amount);
+    }
 }

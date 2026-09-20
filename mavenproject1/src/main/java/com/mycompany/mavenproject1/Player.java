@@ -1,13 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.mavenproject1;
 
-/**
- *
- * @author user
- */
-public class Player {
-    
+public abstract class Player {
+    private int balance;
+    private boolean isBankrupt;
+    private String name;
+
+    public Player(String name){
+        this.balance = 10000;
+        this.isBankrupt = false;
+        this.name = name;
+    }
+
+    public int getBalance(){
+        return this.balance;
+    }
+
+    public void setBalance(int amount){
+        this.balance = amount;
+    }
+
+    public boolean getBankrupt(){ 
+        return this.isBankrupt; 
+    }
+
+    public void bankrupt(){ 
+        if (this.balance < 0){
+            this.isBankrupt = true;
+        } 
+    }
+
+    public void increaseBalance(int amount){
+        this.balance += amount;
+    }
+
+    public void decreaseBalance(int amount){
+        this.balance -= amount;
+        if (this.balance < 0){
+            this.bankrupt();
+        }
+    }
+
+    public abstract boolean shouldBuy(int cost);
 }

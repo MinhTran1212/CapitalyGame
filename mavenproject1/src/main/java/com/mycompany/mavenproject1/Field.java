@@ -8,6 +8,6 @@ package com.mycompany.mavenproject1;
  *
  * @author user
  */
-public class Field {
-    
+public abstract class Field {
+    public abstract void stepOn(Player player);
 }
