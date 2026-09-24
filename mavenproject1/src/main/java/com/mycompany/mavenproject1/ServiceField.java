@@ -1,26 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.mavenproject1;
 
 /**
- *
- * @author user
+ * Represents a service field that requires players landing on it
+ * to pay a mandatory service fee to the bank.
  */
 public class ServiceField extends Field {
-        private final int amount;
-    
-    public ServiceField(int amount){
-        this.amount = amount;
+    private int fee;
+
+    /**
+     * Constructs a ServiceField with a specific mandatory fee.
+     *
+     * @param fee the fee amount deducted from visiting players
+     */
+    public ServiceField(int fee) {
+        this.fee = fee;
     }
-    
-    public int getReduction(){
-        return this.amount;
+
+    public int getFee() {
+        return this.fee;
     }
-    
+
+    /**
+     * Deducts the service fee directly from the visiting player's balance.
+     *
+     * @param player the player who landed on this service field
+     */
     @Override
     public void stepOn(Player player) {
-       player.decreaseBalance(this.amount);
+        player.decreaseBalance(this.fee);
     }
 }
