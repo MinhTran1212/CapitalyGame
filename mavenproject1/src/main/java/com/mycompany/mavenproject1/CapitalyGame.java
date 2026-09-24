@@ -15,7 +15,7 @@ public class CapitalyGame {
     public void loadGame(String fileName) throws FileNotFoundException, InvalidInputException {
         File file = new File(fileName);
         if (!file.exists()) {
-            throw new FileNotFoundException("Khong tim thay file: " + fileName);
+            throw new FileNotFoundException("File not found: " + fileName);
         }
 
         Scanner scanner = new Scanner(file);
@@ -32,7 +32,7 @@ public class CapitalyGame {
                 board.add(new LuckyField(scanner.nextInt()));
             } else {
                 scanner.close();
-                throw new InvalidInputException("Loai o khong hop le: " + type);
+                throw new InvalidInputException("Type invalid: " + type);
             }
         }
 
@@ -40,7 +40,7 @@ public class CapitalyGame {
         int numPlayers = scanner.nextInt();
         if (numPlayers < 2) {
             scanner.close();
-            throw new InvalidInputException("Phai co it nhat 2 nguoi choi!");
+            throw new InvalidInputException("Need at least 2 players!");
         }
 
         for (int i = 0; i < numPlayers; i++) {
@@ -54,7 +54,7 @@ public class CapitalyGame {
                 players.add(new TacticalPlayer(name));
             } else {
                 scanner.close();
-                throw new InvalidInputException("Chien thuat khong hop le: " + strategy);
+                throw new InvalidInputException("Strategy Invalid: " + strategy);
             }
         }
 
@@ -63,7 +63,7 @@ public class CapitalyGame {
             int roll = scanner.nextInt();
             if (roll < 1 || roll > 6) {
                 scanner.close();
-                throw new InvalidInputException("Xuc xac phai tu 1 den 6: " + roll);
+                throw new InvalidInputException("Dice need to be from 1 to 6: " + roll);
             }
             diceRolls.add(roll);
         }
@@ -118,21 +118,11 @@ public class CapitalyGame {
         }
 
         if (winner != null) {
-            System.out.println("Nguoi chien thang: " + winner.getName());
-            System.out.println("So tien: " + winner.getBalance());
-            System.out.println("So dat so huu: " + winner.getProperties().size());
+            System.out.println("Winner: " + winner.getName());
+            System.out.println("Money: " + winner.getBalance());
+            System.out.println("Number of field own: " + winner.getFields().size());
         } else {
-            System.out.println("Tat ca nguoi choi deu da pha san!");
-        }
-    }
-
-    public static void main(String[] args) {
-        CapitalyGame game = new CapitalyGame();
-        try {
-            game.loadGame("game_data.txt");
-            game.play();
-        } catch (Exception e) {
-            System.out.println("Loi: " + e.getMessage());
+            System.out.println("Every players bankrupted!");
         }
     }
 }
